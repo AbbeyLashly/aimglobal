@@ -68,9 +68,13 @@
 <div id="skrollr-body">
   <header id="header">
     <div class="container">
-      <div class="logo">
-        <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home"><span><?php print $site_name; ?></span></a>
-      </div>
+      <?php if ($logo) { ?>
+        <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>">
+          <div class="logo">
+            <img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>">
+          </div>
+        </a>
+      <?php }; ?>
       <!-- Start: Navigation -->
       <nav class="main">
         <?php
@@ -104,7 +108,7 @@
     <div class="container">
       <h4 class="section-title"> Testimonials</h4>
       <ul class="row">
-        <li class="col-xs-12 col-md-3">
+        <li class="col-sm-12 col-md-3">
           <div class="row">
             <div class="col-xs-12 col-sm-4 col-md-12">
               <img src="<?php print $base_path . $directory .'/img/joe.jpg'; ?>" class="img-circle">
@@ -120,7 +124,7 @@
             </div>
           </div>
         </li>
-        <li class="col-xs-12 col-md-3">
+        <li class="col-sm-12 col-md-3">
           <div class="row">
             <div class="col-xs-12 col-sm-4 col-md-12">
               <img src="<?php print $base_path . $directory .'/img/marc.jpg'; ?>" class="img-circle">
@@ -137,7 +141,7 @@
             </div>
           </div>
         </li>
-        <li class="col-xs-12  col-md-3">
+        <li class="col-sm-12  col-md-3">
           <div class="row">
             <div class="col-xs-12 col-sm-4 col-md-12">
               <img src="<?php print $base_path . $directory .'/img/sasha.jpg'; ?>" class="img-circle">
@@ -154,7 +158,7 @@
             </div>
           </div>
         </li>
-        <li class="col-xs-12 col-md-3">
+        <li class="col-sm-12 col-md-3">
           <div class="row">
             <div class="col-xs-12 col-sm-4 col-md-12">
               <img src="<?php print $base_path . $directory .'/img/sasha.jpg'; ?>" class="img-circle">
@@ -275,7 +279,7 @@
 <div class="bottom">
   <div class="container">
     <div class="copyrights">
-      AllianceInMotion.org Copyrights 2016. &nbsp | &nbsp <a href="#">Privacy Policy </a>
+      AllianceInMotion.org Copyrights <?php echo date('Y'); ?>. &nbsp | &nbsp <a href="#">Privacy Policy </a>
     </div>
     <div class="developer">
       Powered by <a class="link" href="http://a1digitalsystems.com">A1-Digital Systems</a>

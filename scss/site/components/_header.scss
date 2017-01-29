@@ -1,0 +1,69 @@
+header{
+  position: fixed;
+  background-color: darken($brand-grey, 10%);
+  width: 100%;
+  border-bottom: solid rem(1) #000000;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  transition: all ease-in .3s;
+  line-height: 3.9;
+  height: rem(56);
+  @include media-breakpoint-down(sm){
+    height: rem(45);
+  }
+  .logo{
+    position: absolute;
+    text-align: center;
+    width: rem(200);
+    @include media-breakpoint-down(sm) {
+      text-align: left;
+    }
+    img{
+      width: rem(165);
+      text-align: left;
+
+      @include media-breakpoint-between(sm, md){
+        width:rem(160);
+      }
+      @include media-breakpoint-between(xs, sm){
+        width:rem(140);
+      }
+      @include media-breakpoint-down(xs){
+        width: rem(133);
+      }
+    }
+  }
+  .socials{
+    float: right;
+    margin-top: rem(4);
+    margin-right: 1%;
+    @include media-breakpoint-only(xs){
+      margin-right: 1.1%;
+    }
+    ul{
+      margin: 0;
+      margin-right:rem(10);
+      li{
+        display: inline;
+        padding:rem(10);
+        margin-left: rem(5);
+        line-height: 2;
+        margin-top: rem(5);
+        a{
+          color:#243062;
+          &:hover{
+            color:#000000;
+          }
+        }
+        @include media-breakpoint-only(sm){
+          padding: rem(2);
+        }
+      }
+    }
+  }
+
+
+
+}
