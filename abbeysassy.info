@@ -1,0 +1,23 @@
+name = AbbeySassy Theme
+description = A beautiful responsive Drupal theme based on bootstrap4 and sass. Developed by <a>AbbeyLashly</a>.
+package = Core
+version = VERSION
+core = 7.x
+
+
+stylesheets[all][] = style.css
+stylesheets[all][] = css/responsive.css
+scripts[] = js/jquery.min.js
+
+
+regions[content] = Main Content
+regions[sidebar_first]  = First Sidebar
+regions[sidebar_second] = Second Sidebar
+
+regions[banner] = Home Banner
+regions[videos] = Videos
+regions[testimonials] = Testimonials
+regions[about] = About
+regions[disclaimer] = Disclaimer
+regions[footer-latest] = Footer Latest
+regions[footer-social] = Footer Social

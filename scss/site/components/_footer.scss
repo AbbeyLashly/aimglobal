@@ -1,0 +1,132 @@
+/* --------------------------------------
+    Footer
+----------------------------------------*/
+
+footer{
+  background: $gray-dark;
+  font-size: rem(13);
+  color: $gray-lighter;
+  a{
+    color: $gray-light;
+  }
+  .headline{
+    display: block;
+    margin: 20px 0;
+    border-bottom: 1px groove #e4e9f0;
+    h2{
+      margin: 0 0 -1px 0;
+      padding-bottom: rem(5);
+      display: inline-block;
+      border-bottom: 2px solid #6CB967;
+      font-size: rem(16);
+      color: $gray-lighter;
+    }
+  }
+
+  .content{
+    p{
+      line-height: 2.3;
+    }
+  }
+
+  .useful-links{
+    p{
+      margin-bottom:0;
+    }
+    a{
+      &:hover{
+        color: $gray-lighter;
+        font-size: rem(13);
+      }
+    }
+  }
+
+  .region-footer-latest{
+    ul{
+      li{
+        margin: 0 0 0.8em 1.5em;
+        padding: 0;
+      }
+    }
+  }
+
+  .region-footer-social{
+    iframe{
+      @include media-breakpoint-only(sm){
+        max-width:260px;
+      }
+    }
+  }
+
+
+
+@media (min-width: 544px) and (max-width: 610px){
+  .fb_iframe_widget{
+    width:240px !important;
+  }
+}
+
+
+
+  .fa{
+    width: rem(10);
+  }
+
+  @include media-breakpoint-between(xs,md){
+    padding-bottom: 10px;
+  }
+
+  @include media-breakpoint-only(xs){
+    padding-bottom: 20px;
+    #block-fb-likebox-0 .content{
+      text-align: center;
+    }
+
+    ul{
+      &.list-inline{
+        text-align: center;
+      }
+    }
+  }
+
+
+}
+
+
+
+.bottom{
+background: #000000;
+border-top: none;
+padding: 25px 0;
+color: rgba(255, 255, 255, .7);
+font-size: 13px;
+line-height: 0.3;
+
+  .copyrights{
+    float: left;
+  }
+
+  .developer{
+    float: right;
+  }
+
+  @include media-breakpoint-only(xs){
+    .copyrights, .developer{
+      float: none;
+      text-align: center;
+    }
+    .developer{
+      margin-top: 25px;
+    }
+
+  }
+
+  @include media-breakpoint-only(sm){
+    .copyrights{
+      text-align: left;
+    }
+    .developer{
+      text-align: right;
+    }
+  }
+}

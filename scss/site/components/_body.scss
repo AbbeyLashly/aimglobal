@@ -1,0 +1,476 @@
+/* CSS import */
+@import url("css/font-awesome.css");
+@import url("css/animate.min.css");
+
+
+
+/* -----------------------------------
+    Header Style
+-----------------------------------*/
+#header {
+    position: fixed;
+    border-bottom: solid 1px #efefef;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    background: #fff;
+    width: 100%;
+    transition: all ease-in .3s;
+}
+
+
+
+.logo {
+    text-align: center;
+    float: left;
+    letter-spacing: 2px;
+    padding: 10px 0;
+
+}
+
+
+
+.logo a {
+    font-size: 35px;
+    font-weight: lighter;
+    font-family: 'Lovers Quarrel', cursive;
+    color:#000000;
+}
+
+
+
+nav.main {
+    background: #fff;
+    letter-spacing: 0;
+    text-align: center;
+    filter: alpha(opacity=70);
+    filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=70);
+    -ms-filter:'progid:DXImageTransform.Microsoft.Alpha(Opacity=70)';
+    float: right;
+    position: relative;
+}
+
+#menu-trigger, #close-menu {
+    display: none;
+    font-size: 20px;
+    color: #000;
+    line-height: 20px;
+    width: 40px;
+    padding: 8px 10px;
+    cursor: pointer;
+    margin-top: 7px;
+}
+
+#close-menu {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #fff;
+    transition: all ease-in .3s;
+    opacity: 0;
+    z-index: 1;
+}
+
+body.menu-opened #close-menu {
+    opacity: 1;
+    display: block;
+}
+
+nav ul.nav {
+    margin: 0;
+}
+
+.nav li {
+    display: inline-block;
+    list-style: none;
+    position: relative;
+    margin: 0;
+    padding: 0;
+}
+
+.nav li a {
+    display: block;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    -webkit-transition: all 300ms ease-in;
+    -moz-transition: all 300ms ease-in;
+    -ms-transition: all 300ms ease-in;
+    -o-transition: all 300ms ease-in;
+    transition: all 300ms ease-in;
+    padding:14px  12px;
+    font-weight: lighter;
+    font-size: 14px;
+    text-align: center;
+}
+.mix .gallery-item:hover img, .galleries .gallery-item:hover img, ul.posts-grid li .thumbnail:hover img {
+    -webkit-transform: rotate(3deg) scale(1.2, 1.2);
+    -o-transform: rotate(3deg) scale(1.2, 1.2);
+    transform: rotate(3deg) scale(1.2, 1.2);
+}
+
+.nav > li:last-child a {
+    border-right: none;
+}
+
+.nav li a:hover,
+.nav li.current-menu-item a,
+.nav li.current_page_item a {
+    color: #838383;
+}
+
+.nav li ul.sub-menu a {
+    padding: 10px 15px;
+}
+
+.nav li ul.sub-menu {
+    display: none;
+    background-color: #fff;
+    width: 200px;
+    text-align: left;
+    margin-top: 0;
+    border-bottom: none;
+    position: absolute;
+    z-index: 30;
+    margin: 0;
+    border: solid 1px #eee;
+}
+
+.nav li ul.sub-menu li ul.sub-menu {
+    left: 100%;
+    top: -1px;
+    margin-left: -2px;
+}
+
+.nav.mobile li ul {
+    position: relative;
+    border: none;
+    width: 100%;
+    background: #dadada;
+    text-align: right;
+}
+
+.nav.mobile li ul li a {
+    color: #555555;
+}
+
+.nav li ul li {
+    width: 200px;
+}
+
+.nav li ul li a {
+    border-bottom: 1px solid #d6d6d6;
+    padding: 15px 20px;
+}
+
+body.menu-opened #mobile-menu {
+    transform: translateX(0px);
+}
+
+#mobile-menu .nav li ul.dropdown li a {
+    font-size: 14px;
+    border-bottom: solid 1px #ddd;
+    padding: 10px 15px;
+}
+
+.trigger {
+    display: none;
+    padding: 10px;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.trigger i:hover {
+    color: #e36060;
+}
+
+li.expanded > a:after {
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    transform: translate(0, 0);
+    content: "\f107";
+    margin-left: 10px;
+}
+
+#mobile-menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 100;
+    width: 280px;
+    background: #fff;
+    transform: translateX(300px);
+    transition: all ease-in .3s;
+    box-shadow: 0 0 15px #000;
+}
+
+body.admin-bar #mobile-menu {
+    top: 32px;
+}
+
+#mobile-menu .nav li {
+    display: block;
+    border-bottom: solid 1px #eee;
+    position: relative;
+    width: 100%;
+}
+
+#mobile-menu .nav li a {line-height: 25px;}
+
+#mobile-menu #menu-main-menu {
+    margin: 0;
+}
+
+#mobile-menu li ul.sub-menu {
+    position: relative;
+    width: 100%;
+    background: #eee;
+    left: 0;
+    margin-left: 0;
+}
+
+#mobile-menu li ul.sub-menu li {
+    border-bottom: solid 1px #ddd;
+}
+
+.dropdown-trigger {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 10px;
+    line-height: 30px;
+    width: 50px;
+    text-align: center;
+    cursor: pointer;
+    z-index: 1;
+}
+
+ul.sub-menu .dropdown-trigger {
+    line-height: 20px;
+}
+
+
+
+
+
+
+* {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+#skrollr-body {
+    background: #fff;
+}
+
+html.skrollr {
+    margin-top: 0 !important;
+}
+
+
+body{
+  font:{
+    size: rem(14);
+    family: "Lato", Helvetica, Arial, sans-serif;
+  }
+  color:$brand-text;
+  margin: 0;
+  background-color: $brand-white;
+  overflow-x: hidden;
+  ul{
+    -webkit-padding-start:0 !important;
+    -webkit-padding-end:0;
+  }
+  a{
+    color: $brand-primary;
+    &:hover{
+      color: shade($brand-primary, 90%);
+    }
+  }
+
+  &.admin-bar.logged-in #header.fixed,
+  &.logged-in #header{
+    top:rem(32);
+  }
+
+  &.menu-opened{
+    overflow: hidden;
+    header#header{
+      right: rem(280);
+      left: rem(-280);
+    }
+    #close-menu{
+      opacity: 1;
+      display: block;
+    }
+  }
+
+
+}
+
+
+
+
+
+.clearfix {
+    display: table;
+    width: 100%;
+}
+
+.container {
+    margin: 0 auto;
+    max-width: 1100px;
+    width: 90%;
+}
+
+
+
+
+
+
+
+
+
+.testimonial{
+  margin-bottom: rem(50);
+  img{
+    display: block;
+    margin: 0 auto;
+    position: relative;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 9.375em;
+  }
+  ul{
+    -webkit-padding-start:0;
+    -webkit-margin-after:0;
+    -webkit-margin-before:0;
+    li{
+      list-style-type: none;
+    }
+  }
+  h2{
+    padding-bottom: 0.625em;
+    margin-bottom: 0.625em;
+    -webkit-margin-after:0;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 0.85em;
+    line-height: 1.5em;
+    text-align: center;
+    color: $brand-primary;
+    a{
+      font-size: 0.85em;
+      text-transform: capitalize;
+      font-style: italic;
+      display: block;
+      color:$brand-secondary;
+    }
+  }
+  p{
+    text-align: justify;
+    font-size: rem(13);
+    background-color: $gray-lighter;
+    border-radius: 5px;
+    padding: 10px;
+    @include media-breakpoint-only(sm){
+      padding: 15px 20px;
+      margin-top: 25px;
+    }
+  }
+
+  .view-all
+  {
+    float: right;
+    margin-top: 8px;
+    a{
+      color: $brand-secondary;
+      text-decoration: none;
+      font-weight: lighter;
+      border: 1px solid;
+      padding: 3px 8px;
+      border-radius: 12px;
+      @include media-breakpoint-only(xs){
+        padding: 2px 6px;
+        border-radius: 10px;
+      }
+      &:hover{
+        color: $gray-lighter;
+        background-color: $brand-secondary;
+      }
+    }
+  }
+}
+
+
+
+.videos{
+  margin: 10px 0;
+  ul{
+    list-style-type: none;
+  }
+
+  .item-list{
+    ul{
+      &.pager{
+        @include media-breakpoint-between(xs, sm){
+          margin-top: -30px;
+        }
+        li > {
+          a, span{
+            color: $brand-secondary;
+            display: inline-block;
+            padding: 0px 10px;
+            font-weight: lighter;
+            border: 1px solid $brand-secondary;
+            border-radius: rem(12);
+            &:hover{
+              background-color: $brand-secondary;
+              color: $gray-lighter;
+            }
+          }
+        }
+      }
+    }
+  }
+  .player iframe {
+      width: 100%;
+      height: 280px;
+      @include media-breakpoint-between(xs, sm){
+        height: 320px;
+        margin-bottom: 25px;
+      }
+
+      @include media-breakpoint-only(md){
+        height: 220px;
+      }
+  }
+}
+
+.pager{
+  margin-bottom: 20px;
+
+}
+
+
+ h4{
+   font-size: rem(27);
+   &.section-title{
+    font-family: 'Cormorant Garamond', serif;
+    line-height: 1.4;
+    color: #000000;
+    &:before{
+      display: block;
+      content: "";
+      width: 25px;
+      height: 1.2px;
+      left: 0;
+      top: 0;
+      background: $brand-secondary;
+    }
+  }
+ }

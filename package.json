@@ -1,0 +1,36 @@
+{
+  "name": "abbeysassy",
+  "version": "1.0.0",
+  "description": "A drupal theme for alliancinmotion.org website.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/github.com/AbbeyLashly.git"
+  },
+  "keywords": [
+    "drupal",
+    "bootstrap4",
+    "sass",
+    "responsive"
+  ],
+  "author": "Biodun Olasebikan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/github.com/AbbeyLashly/issues"
+  },
+  "homepage": "https://github.com/github.com/AbbeyLashly#readme",
+  "dependencies": {
+    "gulp": "^3.9.1",
+    "uglify": "^0.1.5"
+  },
+  "devDependencies": {
+    "gulp-sass": "^3.1.0",
+    "gulp-watch": "^4.3.11",
+    "gulp-concat": "^2.6.1",
+    "gulp-minify": "0.0.14",
+    "gulp-uglify": "^2.0.0"
+  }
+}

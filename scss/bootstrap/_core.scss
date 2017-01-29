@@ -1,0 +1,1516 @@
+//
+// Base styles
+//
+
+.btn {
+  display: inline-block;
+  font-weight: $btn-font-weight;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  user-select: none;
+  border: $input-btn-border-width solid transparent;
+  @include button-size($btn-padding-y, $btn-padding-x, $font-size-base, $line-height, $btn-border-radius);
+  @include transition(all .2s ease-in-out);
+
+  &,
+  &:active,
+  &.active {
+    &:focus,
+    &.focus {
+      @include tab-focus();
+    }
+  }
+
+  @include hover-focus {
+    text-decoration: none;
+  }
+  &.focus {
+    text-decoration: none;
+  }
+
+  &:active,
+  &.active {
+    background-image: none;
+    outline: 0;
+    @include box-shadow(inset 0 3px 5px rgba(0,0,0,.125));
+  }
+
+  &.disabled,
+  &:disabled {
+    cursor: $cursor-disabled;
+    opacity: .65;
+    @include box-shadow(none);
+  }
+}
+
+// Future-proof disabling of clicks on `<a>` elements
+a.btn.disabled,
+fieldset[disabled] a.btn {
+  pointer-events: none;
+}
+
+
+//
+// Alternate buttons
+//
+
+.btn-primary {
+  @include button-variant($btn-primary-color, $btn-primary-bg, $btn-primary-border);
+}
+.btn-secondary {
+  @include button-variant($btn-secondary-color, $btn-secondary-bg, $btn-secondary-border);
+}
+.btn-info {
+  @include button-variant($btn-info-color, $btn-info-bg, $btn-info-border);
+}
+.btn-success {
+  @include button-variant($btn-success-color, $btn-success-bg, $btn-success-border);
+}
+.btn-warning {
+  @include button-variant($btn-warning-color, $btn-warning-bg, $btn-warning-border);
+}
+.btn-danger {
+  @include button-variant($btn-danger-color, $btn-danger-bg, $btn-danger-border);
+}
+
+// Remove all backgrounds
+.btn-primary-outline {
+  @include button-outline-variant($btn-primary-bg);
+}
+.btn-secondary-outline {
+  @include button-outline-variant($btn-secondary-border);
+}
+.btn-info-outline {
+  @include button-outline-variant($btn-info-bg);
+}
+.btn-success-outline {
+  @include button-outline-variant($btn-success-bg);
+}
+.btn-warning-outline {
+  @include button-outline-variant($btn-warning-bg);
+}
+.btn-danger-outline {
+  @include button-outline-variant($btn-danger-bg);
+}
+
+
+//
+// Link buttons
+//
+
+// Make a button look and behave like a link
+.btn-link {
+  font-weight: normal;
+  color: $link-color;
+  border-radius: 0;
+
+  &,
+  &:active,
+  &.active,
+  &:disabled {
+    background-color: transparent;
+    @include box-shadow(none);
+  }
+  &,
+  &:focus,
+  &:active {
+    border-color: transparent;
+  }
+  @include hover {
+    border-color: transparent;
+  }
+  @include hover-focus {
+    color: $link-hover-color;
+    text-decoration: $link-hover-decoration;
+    background-color: transparent;
+  }
+  &:disabled {
+    @include hover-focus {
+      color: $btn-link-disabled-color;
+      text-decoration: none;
+    }
+  }
+}
+
+
+//
+// Button Sizes
+//
+
+.btn-lg {
+  // line-height: ensure even-numbered height of button next to large input
+  @include button-size($btn-padding-y-lg, $btn-padding-x-lg, $font-size-lg, $line-height-lg, $btn-border-radius-lg);
+}
+.btn-sm {
+  // line-height: ensure proper height of button next to small input
+  @include button-size($btn-padding-y-sm, $btn-padding-x-sm, $font-size-sm, $line-height-sm, $btn-border-radius-sm);
+}
+
+
+//
+// Block button
+//
+
+.btn-block {
+  display: block;
+  width: 100%;
+}
+
+// Vertically space out multiple block buttons
+.btn-block + .btn-block {
+  margin-top: 5px;
+}
+
+// Specificity overrides
+input[type="submit"],
+input[type="reset"],
+input[type="button"] {
+  &.btn-block {
+    width: 100%;
+  }
+}
+
+// Inline and block code styles
+code,
+kbd,
+pre,
+samp {
+  font-family: $font-family-monospace;
+}
+
+// Inline code
+code {
+  padding: .2rem .4rem;
+  font-size: 90%;
+  color: $code-color;
+  background-color: $code-bg;
+  @include border-radius($border-radius);
+}
+
+// User input typically entered via keyboard
+kbd {
+  padding: .2rem .4rem;
+  font-size: 90%;
+  color: $kbd-color;
+  background-color: $kbd-bg;
+  @include border-radius($border-radius-sm);
+  @include box-shadow(inset 0 -.1rem 0 rgba(0,0,0,.25));
+
+  kbd {
+    padding: 0;
+    font-size: 100%;
+    font-weight: $nested-kbd-font-weight;
+    @include box-shadow(none);
+  }
+}
+
+// Blocks of code
+pre {
+  display: block;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 90%;
+  line-height: $line-height;
+  color: $pre-color;
+
+  // Account for some code outputs that place code tags in pre tags
+  code {
+    padding: 0;
+    font-size: inherit;
+    color: inherit;
+    background-color: transparent;
+    border-radius: 0;
+  }
+}
+
+// Enable scrollable blocks of code
+.pre-scrollable {
+  max-height: $pre-scrollable-max-height;
+  overflow-y: scroll;
+}
+
+//
+// Textual form controls
+//
+
+.form-control {
+  display: block;
+  width: 100%;
+  // // Make inputs at least the height of their button counterpart (base line-height + padding + border)
+  // height: $input-height;
+  padding: $input-padding-y $input-padding-x;
+  font-size: $font-size-base;
+  line-height: $line-height;
+  color: $input-color;
+  background-color: $input-bg;
+  // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214.
+  background-image: none;
+  border: $input-btn-border-width solid $input-border-color;
+  // Note: This has no effect on <select>s in some browsers, due to the limited stylability of `<select>`s in CSS.
+  @include border-radius($input-border-radius);
+  @include box-shadow($input-box-shadow);
+  @include transition(border-color ease-in-out .15s, box-shadow ease-in-out .15s);
+
+  // Make inputs at least the height of their button counterpart (base line-height + padding + border).
+  // Only apply the height to textual inputs and some selects.
+  // &:not(textarea),
+  // &:not(select[size]),
+  // &:not(select[multiple]) {
+  //   height: $input-height;
+  // }
+
+  // Unstyle the caret on `<select>`s in IE10+.
+  &::-ms-expand {
+    background-color: transparent;
+    border: 0;
+  }
+
+  // Customize the `:focus` state to imitate native WebKit styles.
+  @include form-control-focus();
+
+  // Placeholder
+  &::placeholder {
+    color: $input-color-placeholder;
+    // Override Firefox's unusual default opacity; see https://github.com/twbs/bootstrap/pull/11526.
+    opacity: 1;
+  }
+
+  // Disabled and read-only inputs
+  //
+  // HTML5 says that controls under a fieldset > legend:first-child won't be
+  // disabled if the fieldset is disabled. Due to implementation difficulty, we
+  // don't honor that edge case; we style them as disabled anyway.
+  &:disabled,
+  &[readonly] {
+    background-color: $input-bg-disabled;
+    // iOS fix for unreadable disabled content; see https://github.com/twbs/bootstrap/issues/11655.
+    opacity: 1;
+  }
+
+  &:disabled {
+    cursor: $cursor-disabled;
+  }
+}
+
+
+// Make file inputs better match text inputs by forcing them to new lines.
+.form-control-file,
+.form-control-range {
+  display: block;
+}
+
+
+//
+// Labels
+//
+
+// For use with horizontal and inline forms, when you need the label text to
+// align with the form controls.
+.form-control-label {
+  padding: $input-padding-y $input-padding-x;
+  margin-bottom: 0; // Override the `<label>` default
+}
+
+
+// Todo: clear this up
+
+// Special styles for iOS temporal inputs
+//
+// In Mobile Safari, setting `display: block` on temporal inputs causes the
+// text within the input to become vertically misaligned. As a workaround, we
+// set a pixel line-height that matches the given height of the input, but only
+// for Safari. See https://bugs.webkit.org/show_bug.cgi?id=139848
+//
+// Note that as of 8.3, iOS doesn't support `datetime` or `week`.
+
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  input[type="date"],
+  input[type="time"],
+  input[type="datetime-local"],
+  input[type="month"] {
+    &.form-control {
+      line-height: $input-height;
+    }
+
+    &.input-sm,
+    .input-group-sm &.form-control {
+      line-height: $input-height-sm;
+    }
+
+    &.input-lg,
+    .input-group-lg &.form-control {
+      line-height: $input-height-lg;
+    }
+  }
+}
+
+
+// Static form control text
+//
+// Apply class to an element to make any string of text align with labels in a
+// horizontal form layout.
+
+.form-control-static {
+  min-height: $input-height;
+  // Size it appropriately next to real form controls
+  padding-top: $input-padding-y;
+  padding-bottom: $input-padding-y;
+  // Remove default margin from `p`
+  margin-bottom: 0;
+
+  &.form-control-sm,
+  &.form-control-lg {
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
+
+
+// Form control sizing
+//
+// Build on `.form-control` with modifier classes to decrease or increase the
+// height and font-size of form controls.
+//
+// The `.form-group-* form-control` variations are sadly duplicated to avoid the
+// issue documented in https://github.com/twbs/bootstrap/issues/15074.
+
+.form-control-sm {
+  // height: $input-height-sm;
+  padding: $input-padding-y-sm $input-padding-x-sm;
+  font-size: $font-size-sm;
+  line-height: $line-height-sm;
+  @include border-radius($input-border-radius-sm);
+}
+
+.form-control-lg {
+  // height: $input-height-lg;
+  padding: $input-padding-y-lg $input-padding-x-lg;
+  font-size: $font-size-lg;
+  line-height: $line-height-lg;
+  @include border-radius($input-border-radius-lg);
+}
+
+
+// Form groups
+//
+// Designed to help with the organization and spacing of vertical forms. For
+// horizontal forms, use the predefined grid classes.
+
+.form-group {
+  margin-bottom: $form-group-margin-bottom;
+}
+
+
+// Checkboxes and radios
+//
+// Indent the labels to position radios/checkboxes as hanging controls.
+
+.radio,
+.checkbox {
+  position: relative;
+  display: block;
+  // margin-top:    ($spacer * .75);
+  margin-bottom: ($spacer * .75);
+
+  label {
+    padding-left: 1.25rem;
+    margin-bottom: 0;
+    font-weight: normal;
+    cursor: pointer;
+
+    // When there's no labels, don't position the input.
+    input:only-child {
+      position: static;
+    }
+  }
+}
+.radio input[type="radio"],
+.radio-inline input[type="radio"],
+.checkbox input[type="checkbox"],
+.checkbox-inline input[type="checkbox"] {
+  position: absolute;
+  margin-top: .25rem;
+  // margin-top: 4px \9;
+  margin-left: -1.25rem;
+}
+
+.radio + .radio,
+.checkbox + .checkbox {
+  // Move up sibling radios or checkboxes for tighter spacing
+  margin-top: -.25rem;
+}
+
+// Radios and checkboxes on same line
+.radio-inline,
+.checkbox-inline {
+  position: relative;
+  display: inline-block;
+  padding-left: 1.25rem;
+  margin-bottom: 0;
+  font-weight: normal;
+  vertical-align: middle;
+  cursor: pointer;
+}
+.radio-inline + .radio-inline,
+.checkbox-inline + .checkbox-inline {
+  margin-top: 0;
+  margin-left: .75rem;
+}
+
+// Apply same disabled cursor tweak as for inputs
+// Some special care is needed because <label>s don't inherit their parent's `cursor`.
+//
+// Note: Neither radios nor checkboxes can be readonly.
+input[type="radio"],
+input[type="checkbox"] {
+  &:disabled,
+  &.disabled {
+    cursor: $cursor-disabled;
+  }
+}
+// These classes are used directly on <label>s
+.radio-inline,
+.checkbox-inline {
+  &.disabled {
+    cursor: $cursor-disabled;
+  }
+}
+// These classes are used on elements with <label> descendants
+.radio,
+.checkbox {
+  &.disabled {
+    label {
+      cursor: $cursor-disabled;
+    }
+  }
+}
+
+
+// Form control feedback states
+//
+// Apply contextual and semantic states to individual form controls.
+
+.form-control-success,
+.form-control-warning,
+.form-control-danger {
+  padding-right: ($input-padding-x * 3);
+  background-repeat: no-repeat;
+  background-position: center right ($input-height * .25);
+  background-size: ($input-height * .65) ($input-height * .65);
+}
+
+// Form validation states
+.has-success {
+  @include form-control-validation($brand-success);
+
+  .form-control-success {
+    background-image: url($form-icon-success);
+  }
+}
+
+.has-warning {
+  @include form-control-validation($brand-warning);
+
+  .form-control-warning {
+    background-image: url($form-icon-warning);
+  }
+}
+
+.has-danger {
+  @include form-control-validation($brand-danger);
+
+  .form-control-danger {
+    background-image: url($form-icon-danger);
+  }
+}
+
+
+
+
+// .form-control-success {
+//   background-image: url("#{$form-icon-success}");
+//   border-color: $brand-success;
+// }
+//
+// .form-control-warning {
+//   background-image: url("#{$form-icon-warning}");
+//   border-color: $brand-warning;
+// }
+//
+// .form-control-error {
+//   background-image: url("#{$form-icon-danger}");
+//   border-color: $brand-danger;
+// }
+
+
+// .has-feedback {
+//   // Enable absolute positioning
+//   position: relative;
+//
+//   // Ensure icons don't overlap text
+//   .form-control {
+//     padding-right: ($input-height * 1.25);
+//   }
+// }
+// // Feedback icon
+// .form-control-feedback {
+//   position: absolute;
+//   top: 0;
+//   right: 0;
+//   z-index: 2; // Ensure icon is above input groups
+//   display: block;
+//   width: $input-height;
+//   height: $input-height;
+//   line-height: $input-height;
+//   text-align: center;
+//   pointer-events: none;
+// }
+// .input-lg + .form-control-feedback,
+// .input-group-lg + .form-control-feedback {
+//   width: $input-height-lg;
+//   height: $input-height-lg;
+//   line-height: $input-height-lg;
+// }
+// .input-sm + .form-control-feedback,
+// .input-group-sm + .form-control-feedback {
+//   width: $input-height-sm;
+//   height: $input-height-sm;
+//   line-height: $input-height-sm;
+// }
+//
+// // Form validation states
+// .has-success {
+//   @include form-control-validation($state-success-text, $state-success-text, $state-success-bg);
+// }
+// .has-warning {
+//   @include form-control-validation($state-warning-text, $state-warning-text, $state-warning-bg);
+// }
+// .has-danger {
+//   @include form-control-validation($state-danger-text, $state-danger-text, $state-danger-bg);
+// }
+//
+// // Reposition feedback icon if input has visible label above
+// .has-feedback label {
+//
+//   ~ .form-control-feedback {
+//     // TODO: redo this since we nuked the `$line-height-computed`
+//     top: 0; // Height of the `label` and its margin
+//   }
+//
+//   &.sr-only ~ .form-control-feedback {
+//     top: 0;
+//   }
+// }
+
+
+// Inline forms
+//
+// Make forms appear inline(-block) by adding the `.form-inline` class. Inline
+// forms begin stacked on extra small (mobile) devices and then go inline when
+// viewports reach <768px.
+//
+// Requires wrapping inputs and labels with `.form-group` for proper display of
+// default HTML form controls and our custom form controls (e.g., input groups).
+
+.form-inline {
+
+  // Kick in the inline
+  @include media-breakpoint-up(sm) {
+    // Inline-block all the things for "inline"
+    .form-group {
+      display: inline-block;
+      margin-bottom: 0;
+      vertical-align: middle;
+    }
+
+    // Allow folks to *not* use `.form-group`
+    .form-control {
+      display: inline-block;
+      width: auto; // Prevent labels from stacking above inputs in `.form-group`
+      vertical-align: middle;
+    }
+
+    // Make static controls behave like regular ones
+    .form-control-static {
+      display: inline-block;
+    }
+
+    .input-group {
+      display: inline-table;
+      vertical-align: middle;
+
+      .input-group-addon,
+      .input-group-btn,
+      .form-control {
+        width: auto;
+      }
+    }
+
+    // Input groups need that 100% width though
+    .input-group > .form-control {
+      width: 100%;
+    }
+
+    .form-control-label {
+      margin-bottom: 0;
+      vertical-align: middle;
+    }
+
+    // Remove default margin on radios/checkboxes that were used for stacking, and
+    // then undo the floating of radios and checkboxes to match.
+    .radio,
+    .checkbox {
+      display: inline-block;
+      margin-top: 0;
+      margin-bottom: 0;
+      vertical-align: middle;
+
+      label {
+        padding-left: 0;
+      }
+    }
+    .radio input[type="radio"],
+    .checkbox input[type="checkbox"] {
+      position: relative;
+      margin-left: 0;
+    }
+
+    // Re-override the feedback icon.
+    .has-feedback .form-control-feedback {
+      top: 0;
+    }
+  }
+}
+
+// Container widths
+//
+// Set the container width, and override it for fixed navbars in media queries.
+
+.container {
+  @include make-container();
+  @include make-container-max-widths();
+
+}
+
+
+// Fluid container
+//
+// Utilizes the mixin meant for fixed width containers, but without any defined
+// width for fluid, full width layouts.
+
+.container-fluid {
+  @include make-container();
+}
+
+
+// Row
+//
+// Rows contain and clear the floats of your columns.
+
+@if $enable-grid-classes {
+  .row {
+    @include make-row();
+  }
+}
+
+
+// Columns
+//
+// Common styles for small and large grid columns
+
+@if $enable-grid-classes {
+  @include make-grid-columns();
+}
+
+
+// Flex variation
+//
+// Custom styles for additional flex alignment options.
+
+@if $enable-flex and $enable-grid-classes {
+
+  // Flex column reordering
+
+  @each $breakpoint in map-keys($grid-breakpoints) {
+    @include media-breakpoint-up($breakpoint) {
+      .col-#{$breakpoint}-first { order: -1; }
+      .col-#{$breakpoint}-last  { order: 1; }
+    }
+  }
+
+  // Alignment for every column in row
+
+  @each $breakpoint in map-keys($grid-breakpoints) {
+    @include media-breakpoint-up($breakpoint) {
+      .row-#{$breakpoint}-top    { align-items: flex-start; }
+      .row-#{$breakpoint}-center { align-items: center; }
+      .row-#{$breakpoint}-bottom { align-items: flex-end; }
+    }
+  }
+
+  // Alignment per column
+
+  @each $breakpoint in map-keys($grid-breakpoints) {
+    @include media-breakpoint-up($breakpoint) {
+      .col-#{$breakpoint}-top    { align-self: flex-start; }
+      .col-#{$breakpoint}-center { align-self: center; }
+      .col-#{$breakpoint}-bottom { align-self: flex-end; }
+    }
+  }
+}
+
+// Responsive images (ensure images don't scale beyond their parents)
+//
+// This is purposefully opt-in via an explicit class rather than being the default for all `<img>`s.
+// We previously tried the "images are responsive by default" approach in Bootstrap v2,
+// and abandoned it in Bootstrap v3 because it breaks lots of third-party widgets (including Google Maps)
+// which weren't expecting the images within themselves to be involuntarily resized.
+// See also https://github.com/twbs/bootstrap/issues/18178
+.img-fluid {
+  @include img-fluid();
+}
+
+// Rounded corners
+.img-rounded {
+  @include border-radius($border-radius-lg);
+}
+
+// Image thumbnails
+.img-thumbnail {
+  padding: $thumbnail-padding;
+  line-height: $line-height;
+  background-color: $thumbnail-bg;
+  border: $thumbnail-border-width solid $thumbnail-border-color;
+  border-radius: $thumbnail-border-radius;
+  transition: all .2s ease-in-out;
+  @include box-shadow(0 1px 2px rgba(0,0,0,.075));
+
+  // Keep them at most 100% wide
+  @include img-fluid(inline-block);
+}
+
+// Perfect circle
+.img-circle {
+  border-radius: 50%;
+}
+
+//
+// Figures
+//
+
+.figure {
+  // Ensures the caption's text aligns with the image.
+  display: inline-block;
+}
+
+.figure-img {
+  margin-bottom: ($spacer-y / 2);
+  line-height: 1;
+}
+
+.figure-caption {
+  font-size: 90%;
+  color: $gray-light;
+}
+
+// Reboot
+//
+// Global resets to common HTML elements and more for easier usage by Bootstrap.
+// Adds additional rules on top of Normalize.css, including several overrides.
+
+
+// Reset the box-sizing
+//
+// Change from `box-sizing: content-box` to `border-box` so that when you add
+// `padding` or `border`s to an element, the overall declared `width` does not
+// change. For example, `width: 100px;` will always be `100px` despite the
+// `border: 10px solid red;` and `padding: 20px;`.
+//
+// Heads up! This reset may cause conflicts with some third-party widgets. For
+// recommendations on resolving such conflicts, see
+// http://getbootstrap.com/getting-started/#third-box-sizing.
+//
+// Credit: https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+
+// Make viewport responsive
+//
+// @viewport is needed because IE 10+ doesn't honor <meta name="viewport"> in
+// some cases. See http://timkadlec.com/2012/10/ie10-snap-mode-and-responsive-design/.
+// Eventually @viewport will replace <meta name="viewport">. It's been manually
+// prefixed for forward-compatibility.
+//
+// However, `device-width` is broken on IE 10 on Windows (Phone) 8,
+// (see http://timkadlec.com/2013/01/windows-phone-8-and-device-width/ and https://github.com/twbs/bootstrap/issues/10497)
+// and the fix for that involves a snippet of JavaScript to sniff the user agent
+// and apply some conditional CSS.
+//
+// See http://getbootstrap.com/getting-started/#support-ie10-width for the relevant hack.
+//
+// Wrap `@viewport` with `@at-root` for when folks do a nested import (e.g.,
+// `.class-name { @import "bootstrap"; }`).
+//
+// Includes future-proofed vendor prefixes as well.
+@at-root {
+  @-moz-viewport      { width: device-width; }
+  @-ms-viewport       { width: device-width; }
+  @-o-viewport        { width: device-width; }
+  @-webkit-viewport   { width: device-width; }
+  @viewport           { width: device-width; }
+}
+
+
+//
+// Reset HTML, body, and more
+//
+
+html {
+  // Sets a specific default `font-size` for user with `rem` type scales.
+  font-size: $font-size-root;
+  // Changes the default tap highlight to be completely transparent in iOS.
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+body {
+  // Make the `body` use the `font-size-root`
+  font-family: $font-family-base;
+  font-size: $font-size-base;
+  line-height: $line-height;
+  // Go easy on the eyes and use something other than `#000` for text
+  color: $body-color;
+  // By default, `<body>` has no `background-color` so we set one as a best practice.
+  background-color: $body-bg;
+}
+
+// Suppress the focus outline on elements that cannot be accessed via keyboard.
+// This prevents an unwanted focus outline from appearing around elements that
+// might still respond to pointer events.
+//
+// Credit: https://github.com/suitcss/base
+[tabindex="-1"]:focus {
+  outline: none !important;
+}
+
+
+//
+// Typography
+//
+
+// Remove top margins from headings
+//
+// By default, `<h1>`-`<h6>` all receive top and bottom margins. We nuke the top
+// margin for easier control within type scales as it avoids margin collapsing.
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 0;
+  margin-bottom: .5rem;
+}
+
+// Reset margins on paragraphs
+//
+// Similarly, the top margin on `<p>`s get reset. However, we also reset the
+// bottom margin to use `rem` units instead of `em`.
+p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+// Abbreviations and acronyms
+abbr[title],
+// Add data-* attribute to help out our tooltip plugin, per https://github.com/twbs/bootstrap/issues/5257
+abbr[data-original-title] {
+  cursor: help;
+  border-bottom: 1px dotted $abbr-border-color;
+}
+
+address {
+  margin-bottom: 1rem;
+  font-style: normal;
+  line-height: inherit;
+}
+
+ol,
+ul,
+dl {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+ol ol,
+ul ul,
+ol ul,
+ul ol {
+  margin-bottom: 0;
+}
+
+dt {
+  font-weight: $dt-font-weight;
+}
+
+dd {
+  margin-bottom: .5rem;
+  margin-left: 0; // Undo browser default
+}
+
+blockquote {
+  margin: 0 0 1rem;
+}
+
+
+//
+// Links
+//
+
+a {
+  color: $link-color;
+  text-decoration: $link-decoration;
+
+  @include hover-focus {
+    color: $link-hover-color;
+    text-decoration: $link-hover-decoration;
+  }
+
+  &:focus {
+    @include tab-focus();
+  }
+}
+
+
+//
+// Code
+//
+
+pre {
+  // Remove browser default top margin
+  margin-top: 0;
+  // Reset browser default of `1em` to use `rem`s
+  margin-bottom: 1rem;
+}
+
+
+//
+// Figures
+//
+
+figure {
+  // Normalize adds `margin` to `figure`s as browsers apply it inconsistently.
+  // We reset that to create a better flow in-page.
+  margin: 0 0 1rem;
+}
+
+
+//
+// Images
+//
+
+img {
+  // By default, `<img>`s are `inline-block`. This assumes that, and vertically
+  // centers them. This won't apply should you reset them to `block` level.
+  vertical-align: middle;
+  // Note: `<img>`s are deliberately not made responsive by default.
+  // For the rationale behind this, see the comments on the `.img-fluid` class.
+}
+
+
+// iOS "clickable elements" fix for role="button"
+//
+// Fixes "clickability" issue (and more generally, the firing of events such as focus as well)
+// for traditionally non-focusable elements with role="button"
+// see https://developer.mozilla.org/en-US/docs/Web/Events/click#Safari_Mobile
+
+[role="button"] {
+  cursor: pointer;
+}
+
+
+// Avoid 300ms click delay on touch devices that support the `touch-action` CSS property.
+//
+// In particular, unlike most other browsers, IE11+Edge on Windows 10 on touch devices and IE Mobile 10-11
+// DON'T remove the click delay when `<meta name="viewport" content="width=device-width">` is present.
+// However, they DO support removing the click delay via `touch-action: manipulation`.
+// See:
+// * http://v4-alpha.getbootstrap.com/content/reboot/#click-delay-optimization-for-touch
+// * http://caniuse.com/#feat=css-touch-action
+// * http://patrickhlauke.github.io/touch/tests/results/#suppressing-300ms-delay
+
+a,
+area,
+button,
+[role="button"],
+input,
+label,
+select,
+summary,
+textarea {
+  touch-action: manipulation;
+}
+
+
+//
+// Tables
+//
+
+table {
+  // Reset for nesting within parents with `background-color`.
+  background-color: $table-bg;
+}
+
+caption {
+  padding-top: $table-cell-padding;
+  padding-bottom: $table-cell-padding;
+  color: $text-muted;
+  text-align: left;
+  caption-side: bottom;
+}
+
+th {
+  // Centered by default, but left-align-ed to match the `td`s below.
+  text-align: left;
+}
+
+
+//
+// Forms
+//
+
+label {
+  // Allow labels to use `margin` for spacing.
+  display: inline-block;
+  margin-bottom: .5rem;
+}
+
+// Work around a Firefox/IE bug where the transparent `button` background
+// results in a loss of the default `button` focus styles.
+//
+// Credit: https://github.com/suitcss/base/
+button:focus {
+  outline: 1px dotted;
+  outline: 5px auto -webkit-focus-ring-color;
+}
+
+input,
+button,
+select,
+textarea {
+  // Remove all `margin`s so our classes don't have to do it themselves.
+  margin: 0;
+  // Normalize includes `font: inherit;`, so `font-family`. `font-size`, etc are
+  // properly inherited. However, `line-height` isn't addressed there. Using this
+  // ensures we don't need to unnecessarily redeclare the global font stack.
+  line-height: inherit;
+  // iOS adds rounded borders by default
+  border-radius: 0;
+}
+
+textarea {
+  // Textareas should really only resize vertically so they don't break their (horizontal) containers.
+  resize: vertical;
+}
+
+fieldset {
+  // Chrome and Firefox set a `min-width: min-content;` on fieldsets,
+  // so we reset that to ensure it behaves more like a standard block element.
+  // See https://github.com/twbs/bootstrap/issues/12359.
+  min-width: 0;
+  // Reset the default outline behavior of fieldsets so they don't affect page layout.
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+legend {
+  // Reset the entire legend element to match the `fieldset`
+  display: block;
+  width: 100%;
+  padding: 0;
+  margin-bottom: .5rem;
+  font-size: 1.5rem;
+  line-height: inherit;
+//  border: 0;
+}
+
+input[type="search"] {
+  // Undo Normalize's default here to match our global overrides.
+  box-sizing: inherit;
+  // This overrides the extra rounded corners on search inputs in iOS so that our
+  // `.form-control` class can properly style them. Note that this cannot simply
+  // be added to `.form-control` as it's not specific enough. For details, see
+  // https://github.com/twbs/bootstrap/issues/11586.
+  -webkit-appearance: none;
+}
+
+// todo: needed?
+output {
+  display: inline-block;
+//  font-size: $font-size-base;
+//  line-height: $line-height;
+//  color: $input-color;
+}
+
+// Always hide an element with the `hidden` HTML attribute (from PureCSS).
+[hidden] {
+  display: none !important;
+}
+
+//
+// Basic Bootstrap table
+//
+
+.table {
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: $spacer;
+
+  th,
+  td {
+    padding: $table-cell-padding;
+    line-height: $line-height;
+    vertical-align: top;
+    border-top: $table-border-width solid $table-border-color;
+  }
+
+  thead th {
+    vertical-align: bottom;
+    border-bottom: (2 * $table-border-width) solid $table-border-color;
+  }
+
+  tbody + tbody {
+    border-top: (2 * $table-border-width) solid $table-border-color;
+  }
+
+  .table {
+    background-color: $body-bg;
+  }
+}
+
+
+//
+// Condensed table w/ half padding
+//
+
+.table-sm {
+  th,
+  td {
+    padding: $table-sm-cell-padding;
+  }
+}
+
+
+// Bordered version
+//
+// Add borders all around the table and between all the columns.
+
+.table-bordered {
+  border: $table-border-width solid $table-border-color;
+
+  th,
+  td {
+    border: $table-border-width solid $table-border-color;
+  }
+
+  thead {
+    th,
+    td {
+      border-bottom-width: (2 * $table-border-width);
+    }
+  }
+}
+
+
+// Zebra-striping
+//
+// Default zebra-stripe styles (alternating gray and transparent backgrounds)
+
+.table-striped {
+  tbody tr:nth-of-type(odd) {
+    background-color: $table-bg-accent;
+  }
+}
+
+
+// Hover effect
+//
+// Placed here since it has to come after the potential zebra striping
+
+.table-hover {
+  tbody tr {
+    @include hover {
+      background-color: $table-bg-hover;
+    }
+  }
+}
+
+
+// Table backgrounds
+//
+// Exact selectors below required to override `.table-striped` and prevent
+// inheritance to nested tables.
+
+// Generate the contextual variants
+@include table-row-variant(active, $table-bg-active);
+@include table-row-variant(success, $state-success-bg);
+@include table-row-variant(info, $state-info-bg);
+@include table-row-variant(warning, $state-warning-bg);
+@include table-row-variant(danger, $state-danger-bg);
+
+
+// Responsive tables
+//
+// Wrap your tables in `.table-responsive` and we'll make them mobile friendly
+// by enabling horizontal scrolling. Only applies <768px. Everything above that
+// will display normally.
+
+.table-responsive {
+  display: block;
+  width: 100%;
+  min-height: 0.01%; // Workaround for IE9 bug (see https://github.com/twbs/bootstrap/issues/14837)
+  overflow-x: auto;
+
+  // TODO: find out if we need this still.
+  //
+  // border: $table-border-width solid $table-border-color;
+  // -ms-overflow-style: -ms-autohiding-scrollbar; // See https://github.com/twbs/bootstrap/pull/10057
+}
+
+
+.thead-inverse {
+  th {
+    color: #fff;
+    background-color: $gray-dark;
+  }
+}
+.thead-default {
+  th {
+    color: $gray;
+    background-color: $gray-lighter;
+  }
+}
+
+.table-inverse {
+  color: $gray-lighter;
+  background-color: $gray-dark;
+
+  &.table-bordered {
+    border: 0;
+  }
+
+  th,
+  td,
+  thead th {
+    border-color: $gray;
+  }
+}
+
+
+.table-reflow {
+  thead {
+    float: left;
+  }
+
+  tbody {
+    display: block;
+    white-space: nowrap;
+  }
+
+  th,
+  td {
+    border-top: $table-border-width solid $table-border-color;
+    border-left: $table-border-width solid $table-border-color;
+
+    &:last-child {
+      border-right: $table-border-width solid $table-border-color;
+    }
+  }
+
+  thead,
+  tbody,
+  tfoot {
+    &:last-child {
+      tr:last-child {
+        th,
+        td {
+          border-bottom: $table-border-width solid $table-border-color;
+        }
+      }
+    }
+  }
+
+  tr {
+    float: left;
+
+    th,
+    td {
+      display: block !important;
+      border: $table-border-width solid $table-border-color;
+    }
+  }
+}
+
+//
+// Headings
+//
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  margin-bottom: $headings-margin-bottom;
+  font-family: $headings-font-family;
+  font-weight: $headings-font-weight;
+  line-height: $headings-line-height;
+  color: $headings-color;
+}
+
+h1 { font-size: $font-size-h1; }
+h2 { font-size: $font-size-h2; }
+h3 { font-size: $font-size-h3; }
+h4 { font-size: $font-size-h4; }
+h5 { font-size: $font-size-h5; }
+h6 { font-size: $font-size-h6; }
+
+// These declarations are kept separate from and placed after
+// the previous tag-based declarations so that the classes beat the tags in
+// the CSS cascade, and thus <h1 class="h2"> will be styled like an h2.
+.h1 { font-size: $font-size-h1; }
+.h2 { font-size: $font-size-h2; }
+.h3 { font-size: $font-size-h3; }
+.h4 { font-size: $font-size-h4; }
+.h5 { font-size: $font-size-h5; }
+.h6 { font-size: $font-size-h6; }
+
+.lead {
+  font-size: $lead-font-size;
+  font-weight: $lead-font-weight;
+}
+
+// Type display classes
+.display-1 {
+  font-size: $display1-size;
+  font-weight: $display1-weight;
+}
+.display-2 {
+  font-size: $display2-size;
+  font-weight: $display2-weight;
+}
+.display-3 {
+  font-size: $display3-size;
+  font-weight: $display3-weight;
+}
+.display-4 {
+  font-size: $display4-size;
+  font-weight: $display4-weight;
+}
+
+
+//
+// Horizontal rules
+//
+
+hr {
+  margin-top: $spacer-y;
+  margin-bottom: $spacer-y;
+  border: 0;
+  border-top: $hr-border-width solid $hr-border-color;
+}
+
+
+//
+// Emphasis
+//
+
+small,
+.small {
+  font-size: 80%;
+  font-weight: normal;
+}
+
+mark,
+.mark {
+  padding: .2em;
+  background-color: $state-warning-bg;
+}
+
+
+//
+// Lists
+//
+
+.list-unstyled {
+  @include list-unstyled;
+}
+
+// Inline turns list items into inline-block
+.list-inline {
+  @include list-unstyled;
+}
+.list-inline-item {
+  display: inline-block;
+
+  &:not(:last-child) {
+    margin-right: $list-inline-padding;
+  }
+}
+
+// Horizontal description lists w/ grid classes
+.dl-horizontal {
+  margin-right: -$grid-gutter-width;
+  margin-left: -$grid-gutter-width;
+  @include clearfix;
+}
+
+
+//
+// Misc
+//
+
+// Builds on `abbr`
+.initialism {
+  font-size: 90%;
+  text-transform: uppercase;
+}
+
+// Blockquotes
+.blockquote {
+  padding: ($spacer / 2) $spacer;
+  margin-bottom: $spacer;
+  font-size: $blockquote-font-size;
+  border-left: .25rem solid $blockquote-border-color;
+}
+
+.blockquote-footer {
+  display: block;
+  font-size: 80%; // back to default font-size
+  line-height: $line-height;
+  color: $blockquote-small-color;
+
+  &::before {
+    content: "\2014 \00A0"; // em dash, nbsp
+  }
+}
+
+// Opposite alignment of blockquote
+.blockquote-reverse {
+  padding-right: $spacer;
+  padding-left: 0;
+  text-align: right;
+  border-right: .25rem solid $blockquote-border-color;
+  border-left: 0;
+}
+
+.blockquote-reverse .blockquote-footer {
+  &::before {
+    content: "";
+  }
+  &::after {
+    content: "\00A0 \2014"; // nbsp, em dash
+  }
+}

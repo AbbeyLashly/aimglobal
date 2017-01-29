@@ -1,0 +1,11 @@
+/* --------------------------------------
+    Misc
+----------------------------------------*/
+
+.btn-social {
+  @include button-variant($brand-white, $brand-secondary, $brand-secondary);
+  border-radius: rem(4);
+  line-height: 1.9;
+  text-align: center;
+  font-size: rem(11.5);
+}
