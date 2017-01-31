@@ -1,3 +1,213 @@
 /* --------------------------------------
     Navigation
 ----------------------------------------*/
+
+nav.main {
+    letter-spacing: 0;
+    text-align: center;
+    filter: alpha(opacity=70);
+    filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=70);
+    -ms-filter:'progid:DXImageTransform.Microsoft.Alpha(Opacity=70)';
+    float: right;
+    position: relative;
+}
+
+#menu-trigger, #close-menu {
+    display: none;
+    font-size: 20px;
+    color: #000;
+    line-height: 20px;
+    width: 40px;
+    padding: 8px 10px;
+    cursor: pointer;
+    margin-top: 7px;
+}
+
+#close-menu {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #fff;
+    transition: all ease-in .3s;
+    opacity: 0;
+    z-index: 1;
+}
+
+body.menu-opened #close-menu {
+    opacity: 1;
+    display: block;
+}
+
+nav ul.nav {
+    margin: 0;
+}
+
+.nav li {
+    display: inline-block;
+    list-style: none;
+    position: relative;
+    margin: 0;
+    padding: 0;
+}
+
+.nav li a {
+    display: block;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    -webkit-transition: all 300ms ease-in;
+    -moz-transition: all 300ms ease-in;
+    -ms-transition: all 300ms ease-in;
+    -o-transition: all 300ms ease-in;
+    transition: all 300ms ease-in;
+    font-weight: lighter;
+    line-height: 4.15;
+    margin: 0 15px;
+    font-size: 14px;
+    color: $brand-white;
+    text-align: center;
+}
+.mix .gallery-item:hover img, .galleries .gallery-item:hover img, ul.posts-grid li .thumbnail:hover img {
+    -webkit-transform: rotate(3deg) scale(1.2, 1.2);
+    -o-transform: rotate(3deg) scale(1.2, 1.2);
+    transform: rotate(3deg) scale(1.2, 1.2);
+}
+
+.nav > li:last-child a {
+    border-right: none;
+}
+
+.nav li a:hover,
+.nav li.current-menu-item a,
+.nav li.current_page_item a {
+    color: #838383;
+}
+
+.nav li ul.sub-menu a {
+    padding: 10px 15px;
+}
+
+.nav li ul.sub-menu {
+    display: none;
+    background-color: #fff;
+    width: 200px;
+    text-align: left;
+    margin-top: 0;
+    border-bottom: none;
+    position: absolute;
+    z-index: 30;
+    margin: 0;
+    border: solid 1px #eee;
+}
+
+.nav li ul.sub-menu li ul.sub-menu {
+    left: 100%;
+    top: -1px;
+    margin-left: -2px;
+}
+
+.nav.mobile li ul {
+    position: relative;
+    border: none;
+    width: 100%;
+    background: #dadada;
+    text-align: right;
+}
+
+.nav.mobile li ul li a {
+    color: #555555;
+}
+
+.nav li ul li {
+    width: 200px;
+}
+
+.nav li ul li a {
+    border-bottom: 1px solid #d6d6d6;
+    padding: 15px 20px;
+}
+
+body.menu-opened #mobile-menu {
+    transform: translateX(0px);
+}
+
+#mobile-menu .nav li ul.dropdown li a {
+    font-size: 14px;
+    border-bottom: solid 1px #ddd;
+    padding: 10px 15px;
+}
+
+.trigger {
+    display: none;
+    padding: 10px;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.trigger i:hover {
+    color: #e36060;
+}
+
+li.expanded > a:after {
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    transform: translate(0, 0);
+    content: "\f107";
+    margin-left: 10px;
+}
+
+#mobile-menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 100;
+    width: 280px;
+    background: #fff;
+    transform: translateX(300px);
+    transition: all ease-in .3s;
+    box-shadow: 0 0 15px #000;
+}
+
+
+
+#mobile-menu .nav li {
+    display: block;
+    border-bottom: solid 1px #eee;
+    position: relative;
+    width: 100%;
+}
+
+#mobile-menu .nav li a {line-height: 25px;}
+
+#mobile-menu #menu-main-menu {
+    margin: 0;
+}
+
+#mobile-menu li ul.sub-menu {
+    position: relative;
+    width: 100%;
+    background: #eee;
+    left: 0;
+    margin-left: 0;
+}
+
+#mobile-menu li ul.sub-menu li {
+    border-bottom: solid 1px #ddd;
+}
+
+.dropdown-trigger {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 10px;
+    line-height: 30px;
+    width: 50px;
+    text-align: center;
+    cursor: pointer;
+    z-index: 1;
+}
+
+ul.sub-menu .dropdown-trigger {
+    line-height: 20px;
+}
